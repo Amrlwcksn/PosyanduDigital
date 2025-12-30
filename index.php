@@ -1,10 +1,10 @@
 <?php
 include 'includes/header.php';
 include 'includes/functions.php';
-require_once 'connections/conn.php'; // Need DB connection for stats section
+require_once 'connections/conn.php'; 
 check_login();
 
-// Fetch Real Data Counts
+// Mengambil data terkini dari database
 $users_count = $conn->query("SELECT COUNT(*) as total FROM users")->fetch_assoc()['total'];
 $kader_count = $conn->query("SELECT COUNT(*) as total FROM kader WHERE aktif=1")->fetch_assoc()['total'];
 $sasaran_count = $conn->query("SELECT COUNT(*) as total FROM sasaran")->fetch_assoc()['total'];

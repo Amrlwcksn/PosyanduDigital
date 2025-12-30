@@ -1,6 +1,6 @@
 <?php
 session_start();
-$base_url = "http://localhost/posyandudigital"; 
+$base_url = "http://localhost/PosyanduDigital"; 
 
 // Active Menu Helper
 function isActive($path) {
@@ -86,7 +86,7 @@ function isActive($path) {
             </nav>
             <div class="sidebar-footer">
                 <a href="<?php echo $base_url; ?>/logout.php" style="color: #e74c3c; text-decoration: none; display: block; padding: 10px; background: rgba(231, 76, 60, 0.1); border-radius: 5px;">
-                    🚪 Logout
+                    Logout
                 </a>
             </div>
         </aside>
