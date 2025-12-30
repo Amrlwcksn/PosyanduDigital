@@ -1,7 +1,7 @@
-# 🩺 Posyandu Digital  
+# Posyandu Digital  
 **Tugas Besar Mata Kuliah Desain dan Analisis Sistem**
 
-## 📌 Deskripsi Proyek
+## Deskripsi Proyek
 Posyandu Digital merupakan sebuah **Web Sistem Informasi** yang dirancang untuk memudahkan proses administrasi pada kegiatan Posyandu.  
 Sistem ini bertujuan untuk menggantikan proses pencatatan manual menjadi sistem digital yang lebih terstruktur, efisien, dan mudah dikelola.
 
@@ -12,7 +12,7 @@ Sistem informasi ini mendukung pengelolaan:
 
 ---
 
-## 🎯 Tujuan Pengembangan
+## Tujuan Pengembangan
 - Mempermudah administrasi kegiatan Posyandu  
 - Mengurangi pencatatan manual berbasis kertas  
 - Menyediakan sistem pengelolaan data yang rapi dan terpusat  
@@ -20,7 +20,7 @@ Sistem informasi ini mendukung pengelolaan:
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## Teknologi yang Digunakan
 - **Bahasa Pemrograman**: PHP Native  
 - **Database**: MySQL (phpMyAdmin)  
 - **Web Server**: Apache (XAMPP)  
@@ -28,7 +28,7 @@ Sistem informasi ini mendukung pengelolaan:
 
 ---
 
-## ⚙️ Fitur Utama
+## Fitur Utama
 - Manajemen data kader  
 - Manajemen data sasaran  
 - Manajemen data obat (obat masuk dan keluar)  
@@ -37,7 +37,7 @@ Sistem informasi ini mendukung pengelolaan:
 
 ---
 
-## 🧩 Konsep Sistem
+## Konsep Sistem
 Sistem ini dikembangkan berdasarkan konsep **Desain dan Analisis Sistem**, yang meliputi:
 - Analisis kebutuhan pengguna  
 - Perancangan sistem dan alur proses  
@@ -46,7 +46,7 @@ Sistem ini dikembangkan berdasarkan konsep **Desain dan Analisis Sistem**, yang 
 
 ---
 
-## 🚀 Cara Menjalankan Aplikasi
+## Cara Menjalankan Aplikasi
 1. Clone repository ini  
 2. Pindahkan folder project ke direktori `htdocs`  
 3. Jalankan Apache dan MySQL melalui XAMPP  
