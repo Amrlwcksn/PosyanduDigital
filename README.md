@@ -24,7 +24,7 @@ Sistem informasi ini mendukung pengelolaan:
 - **Bahasa Pemrograman**: PHP Native  
 - **Database**: MySQL (phpMyAdmin)  
 - **Web Server**: Apache (XAMPP)  
-- **Frontend**: HTML, CSS, JavaScript  
+- **Frontend**: HTML, CSS, PHP 
 
 ---
 
