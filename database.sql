@@ -1,0 +1,116 @@
+CREATE TABLE alamat_kader (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  jalan VARCHAR(255),
+  rt VARCHAR(5),
+  rw VARCHAR(5),
+  desa VARCHAR(100) NOT NULL,
+  kecamatan VARCHAR(100) NOT NULL,
+  kabupaten VARCHAR(100) NOT NULL,
+  provinsi VARCHAR(100),
+  kode_pos VARCHAR(10),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE alamat_sasaran (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  jalan VARCHAR(255),
+  rt VARCHAR(5),
+  rw VARCHAR(5),
+  desa VARCHAR(100) NOT NULL,
+  kecamatan VARCHAR(100) NOT NULL,
+  kabupaten VARCHAR(100) NOT NULL,
+  provinsi VARCHAR(100),
+  kode_pos VARCHAR(10),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role INT NOT NULL COMMENT '1=Admin, 2=Operator, 3=Kader',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE kader (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nama VARCHAR(100) NOT NULL,
+  alamat_kader_id INT,
+  no_hp VARCHAR(20),
+  jabatan INT COMMENT '1=Ketua, 2=Anggota',
+  aktif BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (alamat_kader_id) REFERENCES alamat_kader(id) ON DELETE SET NULL
+);
+
+CREATE TABLE sasaran (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nama VARCHAR(100) NOT NULL,
+  nik VARCHAR(20) NOT NULL UNIQUE,
+  tanggal_lahir DATE NOT NULL,
+  alamat_sasaran_id INT,
+  jenis_kelamin INT COMMENT '1=Laki-laki, 2=Perempuan',
+  jenis_sasaran INT COMMENT '1=Balita, 2=Ibu Hamil, 3=Ibu Menyusui, 4=Lansia',
+  nama_wali VARCHAR(100),
+  no_hp_wali VARCHAR(20),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (alamat_sasaran_id) REFERENCES alamat_sasaran(id) ON DELETE SET NULL
+);
+
+CREATE TABLE kegiatan_posyandu (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  tanggal_kegiatan DATE NOT NULL,
+  lokasi VARCHAR(255),
+  keterangan VARCHAR(255),
+  created_by INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (created_by) REFERENCES users(id)
+);
+
+CREATE TABLE pelayanan (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  kegiatan_id INT NOT NULL,
+  sasaran_id INT NOT NULL,
+  kader_id INT NOT NULL,
+  berat_badan DECIMAL(5,2),
+  tinggi_badan DECIMAL(5,2),
+  lingkar_lengan DECIMAL(5,2) NULL,
+  status_gizi INT COMMENT '1=Baik, 2=Kurang, 3=Buruk',
+  imunisasi VARCHAR(100) NULL,
+  vitamin VARCHAR(100) NULL,
+  catatan VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (kegiatan_id) REFERENCES kegiatan_posyandu(id),
+  FOREIGN KEY (sasaran_id) REFERENCES sasaran(id),
+  FOREIGN KEY (kader_id) REFERENCES kader(id)
+);
+
+CREATE TABLE logistik (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nama_barang VARCHAR(100) NOT NULL,
+  jenis INT COMMENT '1=Obat, 2=Vitamin, 3=Alat',
+  stok INT DEFAULT 0,
+  satuan VARCHAR(50),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE logistik_transaksi (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  logistik_id INT NOT NULL,
+  kader_id INT NOT NULL,
+  tanggal DATE NOT NULL,
+  jenis_transaksi INT COMMENT '1=Masuk, 2=Keluar',
+  jumlah INT NOT NULL,
+  keterangan VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (logistik_id) REFERENCES logistik(id),
+  FOREIGN KEY (kader_id) REFERENCES kader(id)
+);
