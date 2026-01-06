@@ -37,15 +37,6 @@ Sistem informasi ini mendukung pengelolaan:
 
 ---
 
-## Konsep Sistem
-Sistem ini dikembangkan berdasarkan konsep **Desain dan Analisis Sistem**, yang meliputi:
-- Analisis kebutuhan pengguna  
-- Perancangan sistem dan alur proses  
-- Implementasi sistem berbasis web  
-- Pengujian fungsi dasar sistem  
-
----
-
 ## Cara Menjalankan Aplikasi
 1. Clone repository ini  
 2. Pindahkan folder project ke direktori `htdocs`  
@@ -55,5 +46,12 @@ Sistem ini dikembangkan berdasarkan konsep **Desain dan Analisis Sistem**, yang 
 
 ---
 
-## 👤 Pengembang
-Proyek ini dikembangkan sebagai **Tugas Besar Mata Kuliah Desain dan Analisis Sistem**.
+## Tentang Proyek & Pengembang
+Proyek ini dikembangkan sebagai **Tugas Besar Mata Kuliah Analisa dan Desain Sistem**. 
+
+Selain sebagai pemenuhan tugas akademik, proyek ini ditujukan untuk **pengembangan masyarakat** di sekitar. Karena proyek ini bersifat *open source*, siapa saja diperbolehkan untuk menggunakan, memodifikasi, dan mengimplementasikannya secara nyata di posko-posko Posyandu guna membantu digitalisasi layanan kesehatan.
+
+---
+
+## Lisensi
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
