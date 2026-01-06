@@ -1,18 +1,15 @@
 <?php
-session_start();
-if(isset($_SESSION['user_id'])) {
-    header("Location: index.php");
-    exit;
-}
-
 require_once 'includes/config.php';
+if (!ALLOW_REGISTRATION) {
+    die("Pendaftaran akun sedang dinonaktifkan oleh administrator.");
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Posyandu Digital</title>
+    <title>Registrasi - Posyandu Digital</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body class="login-body">
@@ -30,18 +27,15 @@ require_once 'includes/config.php';
         <div class="login-right">
             <div class="login-wrapper">
                 <div class="login-card-header">
-                    <h2>Masuk Sistem</h2>
-                    <p>Silakan masuk ke akun Anda</p>
+                    <h2>Daftar Akun Baru</h2>
+                    <p>Silakan lengkapi data untuk mendaftar</p>
                 </div>
+                
                 <?php if(isset($_SESSION['error'])): ?>
                     <div class="alert alert-danger"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></div>
                 <?php endif; ?>
-                <?php if(isset($_SESSION['success'])): ?>
-                    <div class="alert alert-success" style="background: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
-                        <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
-                    </div>
-                <?php endif; ?>
-                <form action="actions/login_process.php" method="POST">
+
+                <form action="actions/register_process.php" method="POST">
                     <div class="form-group">
                         <label>Username</label>
                         <div class="input-with-icon">
@@ -54,14 +48,10 @@ require_once 'includes/config.php';
                             <input type="password" name="password" placeholder="Masukkan password" required>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-login">Masuk ke Dashboard</button>
-                    <?php
-                    if (ALLOW_REGISTRATION): 
-                    ?>
-                    <div class="register-link" style="text-align: center; margin-top: 15px;"> 
-                        Belum punya akun? <a href="register.php">Daftar Akun</a>
+                    <button type="submit" class="btn btn-primary btn-login">Daftar Sekarang</button>
+                    <div class="register-link" style="text-align: center; margin-top: 15px;">
+                        Sudah punya akun? <a href="login.php">Masuk di sini</a>
                     </div>
-                    <?php endif; ?>
                     <div class="login-footer">
                         <p>&copy; 2025 Posyandu Digital Indonesia</p>
                     </div>

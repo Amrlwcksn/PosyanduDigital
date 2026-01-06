@@ -84,7 +84,7 @@ $logistik_count = $conn->query("SELECT COUNT(*) as total FROM logistik")->fetch_
             Informasi Sistem
         </h3>
         <p>Sistem ini dirancang untuk mempermudah pencatatan dan pelaporan data Posyandu secara digital.
-        Gunakan menu di sebelah kiri untuk mengelola data master dan transaksi.</p>
+        Gunakan menu di sebelah kiri untuk mengelola data master dan Layanan.</p>
     </div>
 </div>
 

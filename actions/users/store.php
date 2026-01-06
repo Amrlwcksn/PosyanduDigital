@@ -5,15 +5,15 @@ require_once '../../includes/functions.php'; // For potential future use or incl
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $conn->real_escape_string($_POST['username']);
-    $password = $_POST['password']; // In real app, hash this!
-    $role = (int)$_POST['role'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $role = (int) $_POST['role'];
 
-    $sql = "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')";
+    $sql = "INSERT INTO users (username, password, role) VALUES ('$username','$password','$role')";
 
-    if ($conn->query($sql) === TRUE) {
+    if ($conn->query($sql) === TRUE){
         flash_message('msg_user', 'User berhasil ditambahkan.');
-        header("Location: ../../views/users/index.php");
-    } else {
+        header("location: ../../views/users/index.php");
+    }else{
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
